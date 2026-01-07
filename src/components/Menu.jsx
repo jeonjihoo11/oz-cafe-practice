@@ -1,17 +1,18 @@
 import { useState } from "react";
 import Item from "./Item";
 import OrderModal from "./OrderModal";
+import { useMenuContext } from "../context/menuContext";
 
 function Menu({ menu, cart, setCart }) {
-  const [modalOn, setModalOn] = useState(false);
-  const [modalMenu, setModalMenu] = useState(null);
+  const { menu } = useMenuContext();
   if (!menu)
     return (
       <div style={{ textAlign: "center", margin: "80px" }}>
         메뉴 정보가 없어요!
       </div>
     );
-
+  const [modalOn, setModalOn] = useState(false);
+  const [modalMenu, setModalMenu] = useState(null);
   const categorys = Object.keys(menu);
   return (
     <>
